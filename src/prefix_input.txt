@@ -1,0 +1,12 @@
+/+AB-^CDC
+A
+(A+B+(C))+
+AB^CD*Z+/EF*G/+HI+J*+
++*^ABC+*^DAB+*^DAB+*^DAB+*^DAB+*^DAB+*^DAB*^DAB
++*^ABC+*^DAB+*^DAB+*^DAB+*^DAB+*^DAB+*^DAB*^DABAAA
+--+ABC^+BAC
+ABCD
+*^+/
+--+ABC^+@BAC
+/+AB-^3DC
++A*B++^CDA*B++^CDA*B++^CDA*B++^CDA*B++^CDA*B++^CDA*B^CD

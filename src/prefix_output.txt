@@ -1,0 +1,352 @@
+These tests will perform the following transformations using 
+an input file with Prefix expressions to start:
+Prefix-Infix-Postfix-Machine-Infix-Prefix
+
+------------------ Test 1 ------------------
+Running the following trial: Prefix expression to Infix expression
+Prefix expression input: /+AB-^CDC
+Infix expression output: ((A+B)/((C^D)-C))
+Prefix to Infix trial passed.
+Nanoseconds / stack operations to process this trial: 23486000 / 47
+
+Running the following trial: Infix expression to Postfix expression
+Infix expression input: ((A+B)/((C^D)-C))
+Postfix expression output: AB+CD^C-/
+Infix to Postfix trial passed.
+Nanoseconds / stack operations to process this trial: 643100 / 81
+
+Running the following trial: Postfix expression to Machine expression
+Postfix expression input: AB+CD^C-/
+Machine Instructions:
+LD A
+AD B
+ST TEMP1
+LD C
+EX D
+ST TEMP2
+LD TEMP2
+SB C
+ST TEMP3
+LD TEMP1
+DV TEMP3
+ST TEMP4
+Postfix to Machine trial passed.
+Nanoseconds / stack operations to process this trial: 5869200 / 47
+
+Running the following trial: Machine expression to Infix expression
+Infix expression output: ((A+B)/((C^D)-C))
+Machine to Infix trial passed.
+Nanoseconds to process this trial: 349000
+
+Running the following trial: Infix expression to Prefix expression
+Infix expression input: ((A+B)/((C^D)-C))
+Prefix expression output: /+AB-^CDC
+Infix to Prefix trial passed.
+Nanoseconds / stack operations to process this trial: 429800 / 81
+
+
+------------------ Test 2 ------------------
+Running the following trial: Prefix expression to Infix expression
+Prefix expression input: A
+Infix expression output: ERROR: An expression must have at least 3 elements.
+Prefix to Infix trial failed.
+
+------------------ Test 3 ------------------
+Running the following trial: Prefix expression to Infix expression
+Prefix expression input: (A+B+(C))+
+Infix expression output: Error found
+Prefix to Infix trial failed.
+
+------------------ Test 4 ------------------
+Running the following trial: Prefix expression to Infix expression
+Prefix expression input: AB^CD*Z+/EF*G/+HI+J*+
+Infix expression output: Error found
+Prefix to Infix trial failed.
+
+------------------ Test 5 ------------------
+Running the following trial: Prefix expression to Infix expression
+Prefix expression input: +*^ABC+*^DAB+*^DAB+*^DAB+*^DAB+*^DAB+*^DAB*^DAB
+Infix expression output: (((A^B)*C)+(((D^A)*B)+(((D^A)*B)+(((D^A)*B)+(((D^A)*B)+(((D^A)*B)+(((D^A)*B)+((D^A)*B))))))))
+Prefix to Infix trial passed.
+Nanoseconds / stack operations to process this trial: 336600 / 237
+
+Running the following trial: Infix expression to Postfix expression
+Infix expression input: (((A^B)*C)+(((D^A)*B)+(((D^A)*B)+(((D^A)*B)+(((D^A)*B)+(((D^A)*B)+(((D^A)*B)+((D^A)*B))))))))
+Postfix expression output: AB^C*DA^B*DA^B*DA^B*DA^B*DA^B*DA^B*DA^B*+++++++
+Infix to Postfix trial passed.
+Nanoseconds / stack operations to process this trial: 580100 / 481
+
+Running the following trial: Postfix expression to Machine expression
+Postfix expression input: AB^C*DA^B*DA^B*DA^B*DA^B*DA^B*DA^B*DA^B*+++++++
+Machine Instructions:
+LD A
+EX B
+ST TEMP1
+LD TEMP1
+ML C
+ST TEMP2
+LD D
+EX A
+ST TEMP3
+LD TEMP3
+ML B
+ST TEMP4
+LD D
+EX A
+ST TEMP5
+LD TEMP5
+ML B
+ST TEMP6
+LD D
+EX A
+ST TEMP7
+LD TEMP7
+ML B
+ST TEMP8
+LD D
+EX A
+ST TEMP9
+LD TEMP9
+ML B
+ST TEMP10
+LD D
+EX A
+ST TEMP11
+LD TEMP11
+ML B
+ST TEMP12
+LD D
+EX A
+ST TEMP13
+LD TEMP13
+ML B
+ST TEMP14
+LD D
+EX A
+ST TEMP15
+LD TEMP15
+ML B
+ST TEMP16
+LD TEMP14
+AD TEMP16
+ST TEMP17
+LD TEMP12
+AD TEMP17
+ST TEMP18
+LD TEMP10
+AD TEMP18
+ST TEMP19
+LD TEMP8
+AD TEMP19
+ST TEMP20
+LD TEMP6
+AD TEMP20
+ST TEMP21
+LD TEMP4
+AD TEMP21
+ST TEMP22
+LD TEMP2
+AD TEMP22
+ST TEMP23
+Postfix to Machine trial passed.
+Nanoseconds / stack operations to process this trial: 305700 / 237
+
+Running the following trial: Machine expression to Infix expression
+Infix expression output: (((A^B)*C)+(((D^A)*B)+(((D^A)*B)+(((D^A)*B)+(((D^A)*B)+(((D^A)*B)+(((D^A)*B)+((D^A)*B))))))))
+Machine to Infix trial passed.
+Nanoseconds to process this trial: 455800
+
+Running the following trial: Infix expression to Prefix expression
+Infix expression input: (((A^B)*C)+(((D^A)*B)+(((D^A)*B)+(((D^A)*B)+(((D^A)*B)+(((D^A)*B)+(((D^A)*B)+((D^A)*B))))))))
+Prefix expression output: +*^ABC+*^DAB+*^DAB+*^DAB+*^DAB+*^DAB+*^DAB*^DAB
+Infix to Prefix trial passed.
+Nanoseconds / stack operations to process this trial: 503000 / 481
+
+
+------------------ Test 6 ------------------
+Running the following trial: Prefix expression to Infix expression
+Prefix expression input: +*^ABC+*^DAB+*^DAB+*^DAB+*^DAB+*^DAB+*^DAB*^DABAAA
+Infix expression output: Error found
+Prefix to Infix trial failed.
+
+------------------ Test 7 ------------------
+Running the following trial: Prefix expression to Infix expression
+Prefix expression input: --+ABC^+BAC
+Infix expression output: (((A+B)-C)-((B+A)^C))
+Prefix to Infix trial passed.
+Nanoseconds / stack operations to process this trial: 139800 / 57
+
+Running the following trial: Infix expression to Postfix expression
+Infix expression input: (((A+B)-C)-((B+A)^C))
+Postfix expression output: AB+C-BA+C^-
+Infix to Postfix trial passed.
+Nanoseconds / stack operations to process this trial: 123300 / 101
+
+Running the following trial: Postfix expression to Machine expression
+Postfix expression input: AB+C-BA+C^-
+Machine Instructions:
+LD A
+AD B
+ST TEMP1
+LD TEMP1
+SB C
+ST TEMP2
+LD B
+AD A
+ST TEMP3
+LD TEMP3
+EX C
+ST TEMP4
+LD TEMP2
+SB TEMP4
+ST TEMP5
+Postfix to Machine trial passed.
+Nanoseconds / stack operations to process this trial: 79700 / 57
+
+Running the following trial: Machine expression to Infix expression
+Infix expression output: (((A+B)-C)-((B+A)^C))
+Machine to Infix trial passed.
+Nanoseconds to process this trial: 539200
+
+Running the following trial: Infix expression to Prefix expression
+Infix expression input: (((A+B)-C)-((B+A)^C))
+Prefix expression output: --+ABC^+BAC
+Infix to Prefix trial passed.
+Nanoseconds / stack operations to process this trial: 303800 / 101
+
+
+------------------ Test 8 ------------------
+Running the following trial: Prefix expression to Infix expression
+Prefix expression input: ABCD
+Infix expression output: Error found
+Prefix to Infix trial failed.
+
+------------------ Test 9 ------------------
+Running the following trial: Prefix expression to Infix expression
+Prefix expression input: *^+/
+Infix expression output: Error found
+Prefix to Infix trial failed.
+
+------------------ Test 10 ------------------
+Running the following trial: Prefix expression to Infix expression
+Prefix expression input: --+ABC^+@BAC
+Infix expression output: Invalid character: @
+Prefix to Infix trial failed.
+
+------------------ Test 11 ------------------
+Running the following trial: Prefix expression to Infix expression
+Prefix expression input: /+AB-^3DC
+Infix expression output: Invalid character: 3
+Prefix to Infix trial failed.
+
+------------------ Test 12 ------------------
+Running the following trial: Prefix expression to Infix expression
+Prefix expression input: +A*B++^CDA*B++^CDA*B++^CDA*B++^CDA*B++^CDA*B++^CDA*B^CD
+Infix expression output: (A+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(C^D)))))))))))))))
+Prefix to Infix trial passed.
+Nanoseconds / stack operations to process this trial: 280600 / 277
+
+Running the following trial: Infix expression to Postfix expression
+Infix expression input: (A+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(C^D)))))))))))))))
+Postfix expression output: ABCD^A+BCD^A+BCD^A+BCD^A+BCD^A+BCD^A+BCD^*+*+*+*+*+*+*+
+Infix to Postfix trial passed.
+Nanoseconds / stack operations to process this trial: 422200 / 601
+
+Running the following trial: Postfix expression to Machine expression
+Postfix expression input: ABCD^A+BCD^A+BCD^A+BCD^A+BCD^A+BCD^A+BCD^*+*+*+*+*+*+*+
+Machine Instructions:
+LD C
+EX D
+ST TEMP1
+LD TEMP1
+AD A
+ST TEMP2
+LD C
+EX D
+ST TEMP3
+LD TEMP3
+AD A
+ST TEMP4
+LD C
+EX D
+ST TEMP5
+LD TEMP5
+AD A
+ST TEMP6
+LD C
+EX D
+ST TEMP7
+LD TEMP7
+AD A
+ST TEMP8
+LD C
+EX D
+ST TEMP9
+LD TEMP9
+AD A
+ST TEMP10
+LD C
+EX D
+ST TEMP11
+LD TEMP11
+AD A
+ST TEMP12
+LD C
+EX D
+ST TEMP13
+LD B
+ML TEMP13
+ST TEMP14
+LD TEMP12
+AD TEMP14
+ST TEMP15
+LD B
+ML TEMP15
+ST TEMP16
+LD TEMP10
+AD TEMP16
+ST TEMP17
+LD B
+ML TEMP17
+ST TEMP18
+LD TEMP8
+AD TEMP18
+ST TEMP19
+LD B
+ML TEMP19
+ST TEMP20
+LD TEMP6
+AD TEMP20
+ST TEMP21
+LD B
+ML TEMP21
+ST TEMP22
+LD TEMP4
+AD TEMP22
+ST TEMP23
+LD B
+ML TEMP23
+ST TEMP24
+LD TEMP2
+AD TEMP24
+ST TEMP25
+LD B
+ML TEMP25
+ST TEMP26
+LD A
+AD TEMP26
+ST TEMP27
+Postfix to Machine trial passed.
+Nanoseconds / stack operations to process this trial: 297800 / 297
+
+Running the following trial: Machine expression to Infix expression
+Infix expression output: (A+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(C^D)))))))))))))))
+Machine to Infix trial passed.
+Nanoseconds to process this trial: 724300
+
+Running the following trial: Infix expression to Prefix expression
+Infix expression input: (A+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(C^D)))))))))))))))
+Prefix expression output: +A*B++^CDA*B++^CDA*B++^CDA*B++^CDA*B++^CDA*B++^CDA*B^CD
+Infix to Prefix trial passed.
+Nanoseconds / stack operations to process this trial: 482600 / 561
+

@@ -1,0 +1,179 @@
+These tests will perform the following transformations using 
+an input file with Infix expressions to start:
+Infix-Prefix-Infix-Postfix
+
+------------------ Test 1 ------------------
+Running the following trial: Infix expression to Prefix expression
+Infix expression input: +A+B+C
+Prefix expression output:  Syntax error in entry
+Infix to Prefix trial failed.
+
+------------------ Test 2 ------------------
+Running the following trial: Infix expression to Prefix expression
+Infix expression input: (A+B+(C))+
+Prefix expression output:  Syntax error in entry
+Infix to Prefix trial failed.
+
+------------------ Test 3 ------------------
+Running the following trial: Infix expression to Prefix expression
+Infix expression input: A
+Prefix expression output: ERROR: An expression must have at least 3 elements.
+Infix to Prefix trial failed.
+
+------------------ Test 4 ------------------
+Running the following trial: Infix expression to Prefix expression
+Infix expression input: (B/A)^5+(C*A)^B
+Prefix expression output: BAC*^ Invalid character: 5
+Infix to Prefix trial failed.
+
+------------------ Test 5 ------------------
+Running the following trial: Infix expression to Prefix expression
+Infix expression input: A*C^(B+73)
+Prefix expression output:  Invalid character: 3
+Infix to Prefix trial failed.
+
+------------------ Test 6 ------------------
+Running the following trial: Infix expression to Prefix expression
+Infix expression input: A-C/(B*12)
+Prefix expression output:  Invalid character: 2
+Infix to Prefix trial failed.
+
+------------------ Test 7 ------------------
+Running the following trial: Infix expression to Prefix expression
+Infix expression input: (A+B)/(C^D-C)
+Prefix expression output: /+AB-^CDC
+Infix to Prefix trial passed.
+Nanoseconds / stack operations to process this trial: 283700 / 63
+
+Running the following trial: Prefix expression to Infix expression
+Prefix expression input: /+AB-^CDC
+Infix expression output: ((A+B)/((C^D)-C))
+Prefix to Infix trial passed.
+Nanoseconds / stack operations to process this trial: 22877400 / 47
+
+Running the following trial: Infix expression to Postfix expression
+Infix expression input: ((A+B)/((C^D)-C))
+Postfix expression output: AB+CD^C-/
+Infix to Postfix trial passed.
+Nanoseconds / stack operations to process this trial: 294900 / 81
+
+
+------------------ Test 8 ------------------
+Running the following trial: Infix expression to Prefix expression
+Infix expression input: (((A^B)*C)+(((D^A)*B)+(((D^A)*B)+(((D^A)*B)+(((D^A)*B)+(((D^A)*B)+(((D^A)*B)+((D^A)*B))))))))
+Prefix expression output: +*^ABC+*^DAB+*^DAB+*^DAB+*^DAB+*^DAB+*^DAB*^DAB
+Infix to Prefix trial passed.
+Nanoseconds / stack operations to process this trial: 1436400 / 481
+
+Running the following trial: Prefix expression to Infix expression
+Prefix expression input: +*^ABC+*^DAB+*^DAB+*^DAB+*^DAB+*^DAB+*^DAB*^DAB
+Infix expression output: (((A^B)*C)+(((D^A)*B)+(((D^A)*B)+(((D^A)*B)+(((D^A)*B)+(((D^A)*B)+(((D^A)*B)+((D^A)*B))))))))
+Prefix to Infix trial passed.
+Nanoseconds / stack operations to process this trial: 417300 / 237
+
+Running the following trial: Infix expression to Postfix expression
+Infix expression input: (((A^B)*C)+(((D^A)*B)+(((D^A)*B)+(((D^A)*B)+(((D^A)*B)+(((D^A)*B)+(((D^A)*B)+((D^A)*B))))))))
+Postfix expression output: AB^C*DA^B*DA^B*DA^B*DA^B*DA^B*DA^B*DA^B*+++++++
+Infix to Postfix trial passed.
+Nanoseconds / stack operations to process this trial: 1679200 / 481
+
+
+------------------ Test 9 ------------------
+Running the following trial: Infix expression to Prefix expression
+Infix expression input: (((A+B)-C)-((B+A)^C))
+Prefix expression output: --+ABC^+BAC
+Infix to Prefix trial passed.
+Nanoseconds / stack operations to process this trial: 165500 / 101
+
+Running the following trial: Prefix expression to Infix expression
+Prefix expression input: --+ABC^+BAC
+Infix expression output: (((A+B)-C)-((B+A)^C))
+Prefix to Infix trial passed.
+Nanoseconds / stack operations to process this trial: 96800 / 57
+
+Running the following trial: Infix expression to Postfix expression
+Infix expression input: (((A+B)-C)-((B+A)^C))
+Postfix expression output: AB+C-BA+C^-
+Infix to Postfix trial passed.
+Nanoseconds / stack operations to process this trial: 126700 / 101
+
+
+------------------ Test 10 ------------------
+Running the following trial: Infix expression to Prefix expression
+Infix expression input: ABC+-CDB/+*B^C+
+Prefix expression output:  Syntax error in entry
+Infix to Prefix trial failed.
+
+------------------ Test 11 ------------------
+Running the following trial: Infix expression to Prefix expression
+Infix expression input: A*
+Prefix expression output: ERROR: An expression must have at least 3 elements.
+Infix to Prefix trial failed.
+
+------------------ Test 12 ------------------
+Running the following trial: Infix expression to Prefix expression
+Infix expression input: *A
+Prefix expression output: ERROR: An expression must have at least 3 elements.
+Infix to Prefix trial failed.
+
+------------------ Test 13 ------------------
+Running the following trial: Infix expression to Prefix expression
+Infix expression input: ABCD
+Prefix expression output: D Syntax error in entry
+Infix to Prefix trial failed.
+
+------------------ Test 14 ------------------
+Running the following trial: Infix expression to Prefix expression
+Infix expression input: *&(@
+Prefix expression output:  Syntax error in entry
+Infix to Prefix trial failed.
+
+------------------ Test 15 ------------------
+Running the following trial: Infix expression to Prefix expression
+Infix expression input: *+^/
+Prefix expression output:  Syntax error in entry
+Infix to Prefix trial failed.
+
+------------------ Test 16 ------------------
+Running the following trial: Infix expression to Prefix expression
+Infix expression input: (
+Prefix expression output: ERROR: An expression must have at least 3 elements.
+Infix to Prefix trial failed.
+
+------------------ Test 17 ------------------
+Running the following trial: Infix expression to Prefix expression
+Infix expression input: (A
+Prefix expression output: ERROR: An expression must have at least 3 elements.
+Infix to Prefix trial failed.
+
+------------------ Test 18 ------------------
+Running the following trial: Infix expression to Prefix expression
+Infix expression input: (A+
+Prefix expression output:  Syntax error in entry
+Infix to Prefix trial failed.
+
+------------------ Test 19 ------------------
+Running the following trial: Infix expression to Prefix expression
+Infix expression input: (A(
+Prefix expression output:  Error: ) without (
+Infix to Prefix trial failed.
+
+------------------ Test 20 ------------------
+Running the following trial: Infix expression to Prefix expression
+Infix expression input: (A+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(C^D)))))))))))))))
+Prefix expression output: +A*B++^CDA*B++^CDA*B++^CDA*B++^CDA*B++^CDA*B++^CDA*B^CD
+Infix to Prefix trial passed.
+Nanoseconds / stack operations to process this trial: 575800 / 561
+
+Running the following trial: Prefix expression to Infix expression
+Prefix expression input: +A*B++^CDA*B++^CDA*B++^CDA*B++^CDA*B++^CDA*B++^CDA*B^CD
+Infix expression output: (A+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(C^D)))))))))))))))
+Prefix to Infix trial passed.
+Nanoseconds / stack operations to process this trial: 280000 / 277
+
+Running the following trial: Infix expression to Postfix expression
+Infix expression input: (A+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(((C^D)+A)+(B*(C^D)))))))))))))))
+Postfix expression output: ABCD^A+BCD^A+BCD^A+BCD^A+BCD^A+BCD^A+BCD^*+*+*+*+*+*+*+
+Infix to Postfix trial passed.
+Nanoseconds / stack operations to process this trial: 533000 / 601
+
